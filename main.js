@@ -1,16 +1,18 @@
 import "dotenv/config";
 import OpenAI from "openai";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { OpenAIEmbeddings } from "@langchain/openai";
 import { YoutubeLoader } from "langchain/document_loaders/web/youtube";
 import { CharacterTextSplitter } from "langchain/text_splitter";
 import * as readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
+import { start } from "node:repl";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const rl = readline.createInterface({ input, output });
 
 const createYoutubeVideoStore = async (videoLink) => {
+  console.log(videoLink);
   const loader = YoutubeLoader.createFromUrl(videoLink, {
     language: "en",
     addVideoInfo: true,
@@ -32,7 +34,15 @@ const createYoutubeVideoStore = async (videoLink) => {
   return store;
 };
 
-const startChat = async () => {};
+const startQA = async (link) => {
+  const store = await createYoutubeVideoStore(link);
+  const userQuestion = await rl.question("You: ");
+  if (userQuestion.trim === "" || userQuestion.toLowerCase() === "exit") {
+    rl.close();
+    return;
+  }
+  const results = await store.similaritySearch(userQuestion, 2);
+};
 
 const main = async () => {
   console.log(
@@ -44,9 +54,7 @@ const main = async () => {
     rl.close();
     return;
   }
-
-  const store = await createYoutubeVideoStore(youTubeLink);
-  console.log(store);
+  startQA(youTubeLink);
 };
 
 main();
