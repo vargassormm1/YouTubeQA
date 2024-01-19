@@ -1,0 +1,20 @@
+{
+  "name": "youtubeqa",
+  "version": "1.0.0",
+  "description": "AI-powered YouTube Video Analysis Terminal App",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.2",
+    "langchain": "^0.1.4",
+    "openai": "^4.24.7",
+    "youtube-transcript": "^1.0.6",
+    "youtubei.js": "^5.8.0"
+  }
+}
