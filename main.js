@@ -6,7 +6,6 @@ import { YoutubeLoader } from "langchain/document_loaders/web/youtube";
 import { CharacterTextSplitter } from "langchain/text_splitter";
 import * as readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
-import { start } from "node:repl";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const rl = readline.createInterface({ input, output });
