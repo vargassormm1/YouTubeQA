@@ -11,11 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@langchain/openai": "^0.0.12",
+    "@langchain/openai": "^0.0.28",
     "dotenv": "^16.3.2",
-    "langchain": "^0.1.4",
-    "openai": "^4.24.7",
-    "youtube-transcript": "^1.0.6",
-    "youtubei.js": "^5.8.0"
+    "langchain": "^0.1.35",
+    "openai": "^4.38.3",
+    "youtube-transcript": "^1.2.1",
+    "youtubei.js": "^9.3.0"
   }
 }
